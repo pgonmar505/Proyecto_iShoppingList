@@ -1,0 +1,44 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <!-- Contenedor para el nombre y los detalles en un layout vertical -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+
+        android:orientation="vertical">
+
+        <!-- Nombre del producto -->
+        <TextView
+            android:id="@+id/tvProductName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre del producto"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- Detalles del producto debajo del nombre -->
+        <TextView
+            android:id="@+id/tvProductDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detalles"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!-- Botón alineado a la derecha -->
+    <Button
+        android:id="@+id/btnChangePending"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="V"
+        android:focusable="false"
+        android:backgroundTint="#008f39"
+        android:focusableInTouchMode="false"
+        android:textStyle="italic" />
+</LinearLayout>
