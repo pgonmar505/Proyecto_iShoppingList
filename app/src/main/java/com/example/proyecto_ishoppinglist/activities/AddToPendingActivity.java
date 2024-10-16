@@ -70,7 +70,7 @@ public class AddToPendingActivity extends AppCompatActivity {
     private ArrayList<String> getProducts() {
         ArrayList<String> productList = new ArrayList<>();
         for (Product product : this.productList) {
-            String displayName = product.getName() + (product.isPending() ? " (Pendiente)" : " (No pendiente)");
+            String displayName = product.getName() + (product.isPending() ? " (Pendiente)" : " (No pendiente)") + ", " + (product.isLactose() ? "(Con lactosa)" : "(Sin lactosa)") + ", " + (product.isGluten() ? "(Con gluten)" : "(Sin gluten)");
             productList.add(displayName);
         }
         return productList;

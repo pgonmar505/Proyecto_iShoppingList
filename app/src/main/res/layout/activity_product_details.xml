@@ -23,6 +23,18 @@
 
     <!-- Espacio vacío para bajar los botones -->
 
+    <Switch
+        android:id="@+id/swLactose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lactosa" />
+
+    <Switch
+        android:id="@+id/swGluten"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gluten" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,7 @@ public class EditProductActivity extends AppCompatActivity {
     private EditText nombreEditText, detallesEditText;
     private Button saveBtn, cancelBtn;
     private Product producto;
+    private Switch swLactose, swGluten;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,8 @@ public class EditProductActivity extends AppCompatActivity {
         detallesEditText = findViewById(R.id.etDetails);
         saveBtn = findViewById(R.id.btnSave);
         cancelBtn = findViewById(R.id.btnCancel);
+        swLactose = findViewById(R.id.swLactose);
+        swGluten = findViewById(R.id.swGluten);
 
         // Obtener el producto desde el Intent
         producto = (Product) getIntent().getSerializableExtra("producto");
@@ -35,6 +39,8 @@ public class EditProductActivity extends AppCompatActivity {
             // Mostrar los datos actuales del producto en los campos de texto
             nombreEditText.setText(producto.getName());
             detallesEditText.setText(producto.getDescription());
+            swLactose.isChecked();
+            swGluten.isChecked();
         }
 
         // Botón para guardar los cambios
@@ -42,6 +48,8 @@ public class EditProductActivity extends AppCompatActivity {
             // Obtener los nuevos valores introducidos por el usuario
             String nuevoNombre = nombreEditText.getText().toString().trim();
             String nuevaDescripcion = detallesEditText.getText().toString().trim();
+            swLactose.setChecked(producto.isLactose());
+            swGluten.setChecked(producto.isGluten());
 
             // Verificar que los campos no están vacíos
             if (nuevoNombre.isEmpty() || nuevaDescripcion.isEmpty()) {
@@ -52,9 +60,11 @@ public class EditProductActivity extends AppCompatActivity {
             // Actualizar los valores del producto
             producto.setName(nuevoNombre);
             producto.setDescription(nuevaDescripcion);
+            swLactose.setChecked(producto.isLactose());
+            swGluten.setChecked(producto.isGluten());
 
             // Guardar el producto actualizado en la base de datos
-            Database.updateProduct(producto); // Esto actualiza el producto en la base de datos global
+            Database.updateProduct(producto); // Actualiza el producto en la base de datos
 
             // Mostrar un mensaje de confirmación
             Toast.makeText(this, "Producto actualizado correctamente", Toast.LENGTH_SHORT).show();

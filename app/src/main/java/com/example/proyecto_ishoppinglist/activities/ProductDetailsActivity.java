@@ -3,6 +3,7 @@ package com.example.proyecto_ishoppinglist.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private Button editBtn;
     private Button backBtn;
     private Product product;
+    private Switch swLactose, swGluten;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
         productDetailsTextView = findViewById(R.id.productDetailsTextView);
         editBtn = findViewById(R.id.editBtn);
         backBtn = findViewById(R.id.backBtn); // Inicializar el botón "Volver"
+        swLactose = findViewById(R.id.swLactose);
+        swGluten = findViewById(R.id.swGluten);
+
 
         // Obtener el producto desde el intent
         product = (Product) getIntent().getSerializableExtra("product");
@@ -33,6 +38,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
             // Mostrar los detalles del producto
             productNameTextView.setText(product.getName());
             productDetailsTextView.setText(product.getDescription());
+            swLactose.setChecked(product.isLactose());
+            swGluten.setChecked(product.isGluten());
         }
 
         // Botón para editar el producto
@@ -40,7 +47,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
             Intent intent = new Intent(ProductDetailsActivity.this, EditProductActivity.class);
             intent.putExtra("producto", product);
             // Usamos el código de solicitud 1 directamente
-            startActivityForResult(intent, 1);
+            startActivity(intent);
         });
 
         // Botón para volver a la actividad anterior
@@ -64,6 +71,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
                     // Refrescar la información en la pantalla de detalles
                     productNameTextView.setText(product.getName());
                     productDetailsTextView.setText(product.getDescription());
+                    swLactose.setChecked(product.isLactose());
+                    swGluten.setChecked(product.isGluten());
                 }
             }
         }
